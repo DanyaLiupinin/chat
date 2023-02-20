@@ -1,0 +1,57 @@
+.userlist {
+    position: relative;
+    display: inline-block;
+    background-color: blue;
+    width: 100%;
+    font-family: 'Circe';
+    font-style: normal;
+    height: 5%;
+    display: flex;
+    flex-direction: row;
+}
+
+.userlist__button_type_down {
+    background: url('../../images/down.png') center no-repeat;
+}
+
+.userlist__button_type_up {
+    background: url('../../images/up.png') center no-repeat;
+}
+
+.userlist__button {
+    border: none;
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    margin: auto 0 auto 10px;
+    cursor: pointer;
+}
+
+.userlist__users {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    top: 35px;
+    left: 0px;
+    width: 100%;
+}
+
+.userlist__title {
+    color: white;
+    font-size: 16px;
+    margin: auto 0 auto 15px;
+}
+
+.userlist__item {
+    color: black;
+    text-decoration: none;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.userlist__users_active {
+    display: block;
+}

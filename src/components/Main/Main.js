@@ -3,8 +3,10 @@ import './Main.css'
 import ChatHeader from '../ChatHeader/ChatHeader'
 import ChatSection from '../ChatSection/ChatSection'
 import ChatInput from '../ChatInput/ChatInput'
+import UserList from '../UserList/UserList'
+
 import { useEffect, useState } from 'react'
-import { openDB, deleteDB, wrap, unwrap } from 'idb';
+
 
 function Main() {
 
@@ -13,15 +15,10 @@ function Main() {
 
     const [userAvatar, setUserAvatar] = useState('')
     const [loggedIn, setLoggedIn] = useState(false)
-    const [chatList, setChatList] = React.useState([]);
+    const [messages, setMessages] = React.useState([]);
 
     const onAddAvatar = (avatar) => {
         setUserAvatar(avatar)
-    }
-
-
-    function getObjectKey(object) {
-        return Object.keys(object)[0];
     }
 
     function sendMessage(data) {
@@ -36,18 +33,17 @@ function Main() {
     }
 
     function updateChatList (data = {}) {
-        const chatList = localStorage.getItem('chatList');
+        const chatList = localStorage.getItem('messages');
         const chatListArr = Boolean(chatList) ? JSON.parse(chatList) : [];
         chatListArr.unshift(data);
 
-        const sort = chatListArr.filter((item) => {
+        const sortArr = chatListArr.filter((item) => {
             const arr = Object.values(item);
-
             return Boolean(arr[arr.length - 1]);
         })
 
-        localStorage.setItem('chatList', JSON.stringify(sort));
-        setChatList(sort);
+        localStorage.setItem('messages', JSON.stringify(sortArr));
+        setMessages(sortArr);
     }
 
 
@@ -71,8 +67,11 @@ function Main() {
                     userAvatar={userAvatar}
                     onAddAvatar={onAddAvatar}
                 />
+
+                <UserList />
+
                 <ChatSection
-                    messages={chatList}
+                    messages={messages}
                     avatar={userAvatar}
                 //onUpdateMessages={onUpdateMessages}
                 />

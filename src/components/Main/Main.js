@@ -35,45 +35,20 @@ function Main() {
         updateChatList(messageData);
     }
 
-    function sortArr(arr, key = '') {
-
-        const sortedArr = arr.map((item, index) => {
-            return {
-                index: index,
-                value: Boolean(key) ? item[key] : item[getObjectKey(item)],
-            };
-        });
-
-        sortedArr.sort((a, b) => {
-            if (a.value > b.value) {
-                return -1;
-            }
-            if (a.value < b.value) {
-                return 1;
-            }
-            return 0;
-        });
-
-        return sortedArr.map((item) => arr[item.index]);
-    }
-
     function updateChatList (data = {}) {
         const chatList = localStorage.getItem('chatList');
         const chatListArr = Boolean(chatList) ? JSON.parse(chatList) : [];
-        chatListArr.push(data);
+        chatListArr.unshift(data);
 
-        const sortedChatList = sortArr(chatListArr.filter((item) => {
-
+        const sort = chatListArr.filter((item) => {
             const arr = Object.values(item);
 
-            return Boolean(arr[arr.length - 1]);  // если нет даты, то сообщение отлетает
+            return Boolean(arr[arr.length - 1]);
+        })
 
-        }), 'date'); 
-
-        localStorage.setItem('chatList', JSON.stringify(sortedChatList));
-        setChatList(sortedChatList);
+        localStorage.setItem('chatList', JSON.stringify(sort));
+        setChatList(sort);
     }
-
 
 
     React.useEffect(() => {

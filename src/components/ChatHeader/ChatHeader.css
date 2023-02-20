@@ -1,0 +1,232 @@
+.chatHeader {
+    background-color: azure;
+    height: 10%;
+    border-radius: 10px 10px 0 0;
+
+    font-family: 'Circe';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+}
+
+.chatHeader__form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.chatHeader__input {
+    padding: 0 0 0 10px;
+    box-sizing: border-box;
+    border: 0;
+    border-bottom: 1px solid black;
+}
+
+.chatHeader__input_type_avatar {
+    border: none;
+    padding: 0;
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    display: block;
+    width: 0;
+    height: 0;
+}
+
+.chatHeader__label_type_avatar {
+    position: relative;
+}
+
+.chatHeader__photo-container {
+    height: 55px;
+    width: 55px;
+    border-radius: 100%;
+    overflow: hidden;
+    outline: 2px solid rgb(52, 36, 36);
+    display: flex;
+}
+
+.chatHeader__photo-container_type_no-outline {
+    outline: none;
+}
+
+.chatHeader__input-button_type_avatar {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    font-size: 14px;
+    color: rgb(255 255 255);
+    text-align: center;
+    line-height: 22px;
+    height: 55px;
+    width: 55px;
+    /*background-image: url('../../images/photo.png');*/
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    background-color: unset;
+    margin: auto;
+    width: 82%;
+    height: 82%;
+}
+
+.chatHeader__avatar-loaded {
+    width: 100%;
+    height: 100%;
+    outline: none;
+}
+
+.chatHeader__input-button_type_name {
+    margin-left: 5%;
+    width: 60%;
+    background-color: unset;
+    padding: 0;
+    height: 30px;
+}
+
+.chatHeader__input-button_type_name::placeholder {
+font-weight: 300;
+font-size: 18px;
+}
+
+.chatHeader__submit-button {
+    width: 30px;
+    height: 30px;
+    background-color: unset;
+    padding: 0;
+    border: 0;
+    margin-left: 10%;
+    cursor: pointer;
+    position: relative;
+}
+
+.chatHeader__submit-image {
+    width: 100%;
+    height: 100%;
+}
+
+.chatHeader__profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    position: relative;
+}
+
+.chatHeader__avatar {
+    width: 55px;
+    height: 55px;
+    border-radius: 100%;
+    margin-left: 5%;
+}
+
+.chatHeader__username {
+    font-weight: 400;
+    font-size: 26px;
+    margin-left: 5%;
+    width: 60%;
+
+    white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+}
+
+.chatHeader__edit-button {
+    margin-left: 10%;
+    margin-right: 5%;
+    
+    background-color: unset;
+    cursor: pointer;
+    padding: 0;
+    border: 1px solid black;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.chatHeader__button-image {
+    width: 20px;
+    height: 20px;
+}
+
+
+
+@media (max-width: 900px) {
+    .chatHeader__input-button_type_name {
+        margin-left: 7%;
+    }
+
+    .chatHeader__submit-button {
+        margin-left: 7%;
+    }
+
+}
+
+@media (max-width: 750px) {
+    .chatHeader__username {
+        width: 65%;
+    }
+
+    .chatHeader__edit-button {
+        margin-left: 5%;
+        margin-right: 3%;
+    }
+}
+
+@media (max-width: 405px) {
+
+    .chatHeader {
+        height: 25%;
+    }
+
+    .chatHeader__profile {
+        flex-direction: column;
+    }
+
+    .chatHeader__username {
+        margin: auto 0;
+        width: 80%;
+        text-align: center;
+    }
+
+    .chatHeader__avatar {
+        width: 100px;
+        height: 100px;
+        margin-top: 20px;
+    }
+
+    .chatHeader__edit-button {
+        margin: 0 0 20px 0; 
+    }
+
+    .chatHeader__form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .chatHeader__photo-container {
+        width: 100px;
+        height: 100px;
+        margin-top: 20px;
+    }
+
+    .chatHeader__input-button_type_name {
+        margin: auto 0;
+        padding: 0;
+    }
+
+    .chatHeader__submit-button {
+        margin: 0 0 20px 0;
+    }
+
+}

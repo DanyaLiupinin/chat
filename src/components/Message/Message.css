@@ -1,0 +1,48 @@
+.message {
+    display: flex;
+    flex-direction: row;
+    min-height: 55px;
+    font-family: 'Circe';
+    font-style: normal;
+}
+
+.message:not(:first-child) {
+    margin-bottom: 10px;
+}
+
+.message__avatar-container {
+    width: fit-content;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.message__avatar-image {
+    width: 55px;
+    height: 55px;   
+}
+
+.message__text-container {
+    padding-left: 20px;
+    max-width: 80%;
+    word-break: break-all;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.message__text {
+    font-weight: 400;
+font-size: 20px;
+line-height: 29px;
+padding: 0;
+margin: 0;
+vertical-align: middle;
+}
+
+
+
+@media (max-width: 435px) {
+    .message__text-container {
+        max-width: 78%;
+    }
+}

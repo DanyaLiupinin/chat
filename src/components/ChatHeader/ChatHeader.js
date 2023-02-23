@@ -4,7 +4,7 @@ import galochka from '../../images/galochka.png'
 import photo from '../../images/photo.png'
 import editButton from '../../images/editbutton.png'
 
-function ChatHeader({ userAvatar, onAddAvatar }) {
+function ChatHeader({ userAvatar, onAddAvatar, submitHandler }) {
 
     //const [avatarURL, setAvatarURL] = useState('')
     const [isUserCreated, setIsUserCreated] = useState(false)
@@ -53,6 +53,7 @@ function ChatHeader({ userAvatar, onAddAvatar }) {
         setIsUserCreated(true)
         sessionStorage.setItem('username', username)
         sessionStorage.setItem(`${username}-avatar`, userAvatar)
+        submitHandler(username)
     }
 
     const editProfileData = () => {

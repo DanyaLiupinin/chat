@@ -13,6 +13,11 @@
     border-radius: 10px;
 }
 
+.inactive {
+    opacity: .5;
+    cursor: default;
+}   
+
 @media (max-width: 900px) {
     .main__section {
         width: 550px;

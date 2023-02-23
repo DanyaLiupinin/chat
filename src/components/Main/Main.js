@@ -15,7 +15,8 @@ function Main() {
 
     const [userAvatar, setUserAvatar] = useState('')
     const [loggedIn, setLoggedIn] = useState(false)
-    const [messages, setMessages] = React.useState([]);
+    const [messages, setMessages] = useState([]);
+    const [users, setUsers] = useState([])
 
     const onAddAvatar = (avatar) => {
         setUserAvatar(avatar)
@@ -32,7 +33,7 @@ function Main() {
         updateChatList(messageData);
     }
 
-    function updateChatList (data = {}) {
+    function updateChatList(data = {}) {
         const chatList = localStorage.getItem('messages');
         const chatListArr = Boolean(chatList) ? JSON.parse(chatList) : [];
         chatListArr.unshift(data);
@@ -46,18 +47,48 @@ function Main() {
         setMessages(sortArr);
     }
 
+    /*
+
+    function signIn(userData) {
+
+        console.log(userData)
+
+        const userList = localStorage.getItem('userList');
+
+        if (userList) {
+            console.log('userlist есть')
+            //updateUserList(userData, JSON.parse(userList));
+        } else {
+            console.log('userlist нет')
+            //updateUserList(userData);
+        }
+
+    } */
+
+    function updateUserList(data, userList = null) {
+
+
+        /*
+        const currentUserIndex = userList
+          .map((item) => getObjectKey(item))
+          .indexOf(getObjectKey(currentUser));
+        userList.splice(currentUserIndex, 1);
+    
+        const sortedUserList = sortArr(userList); */
+        setUsers(users);
+    }
+
 
     React.useEffect(() => {
-        //document.title = Object.values(currentUser)[0];
-    
-        //handleUserList();
+
+        updateUserList();
         updateChatList();
-    
+
         window.addEventListener('storage', () => {
-          //handleUserList();
-          updateChatList();
+            updateUserList();
+            updateChatList();
         });
-      }, []);
+    }, []);
 
 
     return (
@@ -66,16 +97,22 @@ function Main() {
                 <ChatHeader
                     userAvatar={userAvatar}
                     onAddAvatar={onAddAvatar}
+                //submitHandler={signIn}
                 />
 
-                <UserList />
+                <UserList
+                    loggedIn={loggedIn}
+                    users={users}
+                />
 
                 <ChatSection
+                    loggedIn={loggedIn}
                     messages={messages}
                     avatar={userAvatar}
                 //onUpdateMessages={onUpdateMessages}
                 />
                 <ChatInput
+                    loggedIn={loggedIn}
                     onSendMessage={sendMessage}
                 />
             </section>

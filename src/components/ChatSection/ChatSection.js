@@ -1,11 +1,11 @@
 import './ChatSection.css'
 import Message from '../Message/Message'
 
-function ChatSection ({messages, avatar, onUpdateMessages}) {
+function ChatSection ({messages, loggedIn}) {
 
 
     return (
-        <div className='chatSection'>
+        <div className={`chatSection ${!loggedIn ? 'inactive' : ''}`}>
             {/*<button type='button' onClick={updateMessages} className='test-button'></button>*/}
             {
             messages.map((message, i) => {

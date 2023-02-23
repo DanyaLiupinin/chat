@@ -1,0 +1,23 @@
+.popup {
+    width: 40%;
+    height: 200px;
+    background-color: rgb(147, 188, 239);
+    position: absolute;
+    top: 30%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 1;
+    border-radius: 10px;
+    font-family: 'Circe';
+    font-style: normal;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.popup__greeting {
+    font-size: 20px;
+}

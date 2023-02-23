@@ -4,6 +4,8 @@ import ChatHeader from '../ChatHeader/ChatHeader'
 import ChatSection from '../ChatSection/ChatSection'
 import ChatInput from '../ChatInput/ChatInput'
 import UserList from '../UserList/UserList'
+import InfoPopup from '../InfoPopup/InfoPopup'
+import Preloader from '../Preloader/Preloader'
 
 import { useEffect, useState } from 'react'
 
@@ -17,6 +19,7 @@ function Main() {
     const [loggedIn, setLoggedIn] = useState(false)
     const [messages, setMessages] = useState([]);
     const [users, setUsers] = useState([])
+    const [preloader, setPreloader] = useState(false)
 
     const onAddAvatar = (avatar) => {
         setUserAvatar(avatar)
@@ -94,9 +97,22 @@ function Main() {
     return (
         <main className='main'>
             <section className='main__section'>
+
+                {preloader ?
+                    <Preloader /> :
+                    ''
+                }
+
+                {!loggedIn ?
+                    <InfoPopup /> :
+                    ''
+                }
+
                 <ChatHeader
                     userAvatar={userAvatar}
                     onAddAvatar={onAddAvatar}
+                    setLoggedIn={setLoggedIn}
+                    setPreloader={setPreloader}
                 //submitHandler={signIn}
                 />
 

@@ -8,6 +8,7 @@
     height: 5%;
     display: flex;
     flex-direction: row;
+    transition: .8s;
 }
 
 .userlist__button_type_down {

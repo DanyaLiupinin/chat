@@ -3,8 +3,9 @@ import './ChatHeader.css'
 import galochka from '../../images/galochka.png'
 import photo from '../../images/photo.png'
 import editButton from '../../images/editbutton.png'
+import defaultAvatar from '../../images/defaultavatar.png'
 
-function ChatHeader({ userAvatar, onAddAvatar, submitHandler }) {
+function ChatHeader({ userAvatar, onAddAvatar, submitHandler, setLoggedIn, setPreloader }) {
 
     //const [avatarURL, setAvatarURL] = useState('')
     const [isUserCreated, setIsUserCreated] = useState(false)
@@ -24,19 +25,23 @@ function ChatHeader({ userAvatar, onAddAvatar, submitHandler }) {
         if (sessionStorage.getItem('username')) {
             setUsername(sessionStorage.getItem('username'))
             setIsUserCreated(true)
+            setLoggedIn(true)
         }
 
-        
+
         if (sessionStorage.getItem(`${sessionStorage.getItem('username')}-avatar`)) {
             //console.log('da')
             onAddAvatar(sessionStorage.getItem(`${username}-avatar`))
-            setAvatarLoaded(true)
+            
+        } else {
+            onAddAvatar(defaultAvatar)
         }
-/*
-        setUsername(sessionStorage.getItem('username'))
-            setIsUserCreated(true)
-        onAddAvatar(sessionStorage.getItem(`${username}-avatar`))
-            setAvatarLoaded(true) */
+        setAvatarLoaded(true)
+        /*
+                setUsername(sessionStorage.getItem('username'))
+                    setIsUserCreated(true)
+                onAddAvatar(sessionStorage.getItem(`${username}-avatar`))
+                    setAvatarLoaded(true) */
 
     }, [])
 
@@ -50,10 +55,16 @@ function ChatHeader({ userAvatar, onAddAvatar, submitHandler }) {
 
     const saveUserData = (e) => {
         e.preventDefault()
-        setIsUserCreated(true)
-        sessionStorage.setItem('username', username)
-        sessionStorage.setItem(`${username}-avatar`, userAvatar)
-        submitHandler(username)
+        setPreloader(true)
+
+        setTimeout(() => {
+            setIsUserCreated(true)
+            sessionStorage.setItem('username', username)
+            sessionStorage.setItem(`${username}-avatar`, userAvatar)
+            //submitHandler(username)
+            setLoggedIn(true)
+            setPreloader(false)
+        }, 1000)
     }
 
     const editProfileData = () => {

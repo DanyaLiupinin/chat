@@ -3,6 +3,7 @@ import './UserList.css'
 
 function UserList({users, loggedIn}) {
 
+
     const [userListOpened, setUserListOpened] = useState(false)
     const rootEl = useRef(null);
 
@@ -29,9 +30,9 @@ function UserList({users, loggedIn}) {
             }
             <h3 className='userlist__title'>Участники чата</h3>
             <div className={`userlist__users ${userListOpened ? 'userlist__users_active' : ''}`}>
-                {Boolean(users) && users.map((user) => {
+                {users.length > 0 && users.map((user) => {
                     return (
-                        <p className='userlist__item'>{user}</p>
+                        <p className='userlist__item' key={user.id}>{user.username}</p>
                     )
                 }) }
             </div>

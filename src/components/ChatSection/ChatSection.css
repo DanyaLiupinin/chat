@@ -5,26 +5,26 @@
     flex-direction: column-reverse;
     overflow: scroll;
     background: url('../../images/chatbackground.png') no-repeat center;
-    background-size: 260%;
+    background-size: 280%;
     position: relative;
     transition: .8s;
 }
 
 @media (max-width: 900px) {
     .chatSection {
-        background-size: 330%;
+        background-size: 350%;
     }
 }
 
 @media (max-width: 750px) {
     .chatSection {
-        background-size: 400%;
+        background-size: 450%;
     }
 }
 
 @media (max-width: 450px) {
     .chatSection {
-        background-size: 600%;
+        background-size: 650%;
     }
 }
 

@@ -7,6 +7,8 @@ import UserList from '../UserList/UserList'
 import InfoPopup from '../InfoPopup/InfoPopup'
 import Preloader from '../Preloader/Preloader'
 
+import { BroadcastChannel } from 'broadcast-channel';
+
 import { useEffect, useState } from 'react'
 
 
@@ -15,84 +17,90 @@ function Main() {
     // кастомизировать скролл
     // создать контекст пользователя
 
-    const [userAvatar, setUserAvatar] = useState('')
     const [loggedIn, setLoggedIn] = useState(false)
     const [messages, setMessages] = useState([]);
-    const [users, setUsers] = useState([])
     const [preloader, setPreloader] = useState(false)
+    const [infoPopup, setInfoPopup] = useState(true)
 
-    const onAddAvatar = (avatar) => {
-        setUserAvatar(avatar)
+
+
+    const [currentUser, setCurrentUser] = useState({});
+    const [users, setUsers] = useState([])
+
+    const signIn = ({ username, userAvatar }) => {
+
+        const newUser = {
+            username: username,
+            avatar: userAvatar,
+            id: Date.now()
+        }
+
+        setCurrentUser(newUser)
+
+        sessionStorage.setItem('currentUser', JSON.stringify(newUser))
+
+        if (users.length > 0) {
+            setUsers([newUser, ...users])
+        } else {
+            setUsers([newUser])
+        }
+
+        if (localStorage.getItem('allUsers')) {
+            const allUsers = JSON.parse(localStorage.getItem('allUsers'))
+            localStorage.setItem('allUsers', JSON.stringify([...allUsers, newUser]))
+
+        } else {
+            localStorage.setItem('allUsers', JSON.stringify([newUser]))
+        }
+
+        setLoggedIn(true)
+        setInfoPopup(false)
     }
 
-    function sendMessage(data) {
-        const { message } = data;
-        const messageData = {
-            //userKey: getObjectKey(currentUser),
-            //userName: Object.values(currentUser)[0],
-            date: Date.now(),
-            message,
-        };
-        updateChatList(messageData);
-    }
+    const updateUserList = () => {
 
-    function updateChatList(data = {}) {
-        const chatList = localStorage.getItem('messages');
-        const chatListArr = Boolean(chatList) ? JSON.parse(chatList) : [];
-        chatListArr.unshift(data);
-
-        const sortArr = chatListArr.filter((item) => {
-            const arr = Object.values(item);
-            return Boolean(arr[arr.length - 1]);
-        })
-
-        localStorage.setItem('messages', JSON.stringify(sortArr));
-        setMessages(sortArr);
+        if (localStorage.getItem('allUsers')) {
+            const allUsers = JSON.parse(localStorage.getItem('allUsers'));
+            setUsers(allUsers)
+        }
     }
 
     /*
+    const signOut = () => {
+        
+        sessionStorage.clear()
 
-    function signIn(userData) {
+        if (localStorage.getItem('allUsers')) {
 
-        console.log(userData)
+            const allUsers = JSON.parse(localStorage.getItem('allUsers'));
+            const currentUserId = currentUser.id
+            
+            const newUserList = allUsers.filter((user) => {
+                return user.id !== currentUserId
+            })
 
-        const userList = localStorage.getItem('userList');
-
-        if (userList) {
-            console.log('userlist есть')
-            //updateUserList(userData, JSON.parse(userList));
-        } else {
-            console.log('userlist нет')
-            //updateUserList(userData);
+            setUsers(newUserList)
         }
-
     } */
 
-    function updateUserList(data, userList = null) {
-
-
-        /*
-        const currentUserIndex = userList
-          .map((item) => getObjectKey(item))
-          .indexOf(getObjectKey(currentUser));
-        userList.splice(currentUserIndex, 1);
-    
-        const sortedUserList = sortArr(userList); */
-        setUsers(users);
-    }
-
+    useEffect(() => {
+        if (sessionStorage.getItem('currentUser')) {
+            const user = JSON.parse(sessionStorage.getItem('currentUser'))
+            setCurrentUser(user)
+            setLoggedIn(true)
+            setInfoPopup(false)
+        }
+    }, [])
 
     React.useEffect(() => {
 
         updateUserList();
-        updateChatList();
 
         window.addEventListener('storage', () => {
             updateUserList();
-            updateChatList();
         });
-    }, []);
 
+    }, []);
 
     return (
         <main className='main'>
@@ -103,17 +111,17 @@ function Main() {
                     ''
                 }
 
-                {!loggedIn ?
+                {infoPopup ?
                     <InfoPopup /> :
                     ''
                 }
 
                 <ChatHeader
-                    userAvatar={userAvatar}
-                    onAddAvatar={onAddAvatar}
                     setLoggedIn={setLoggedIn}
+                    loggedIn={loggedIn}
                     setPreloader={setPreloader}
-                //submitHandler={signIn}
+                    submitHandler={signIn}
+                    currentUser={currentUser}
                 />
 
                 <UserList
@@ -121,16 +129,22 @@ function Main() {
                     users={users}
                 />
 
+
+
                 <ChatSection
                     loggedIn={loggedIn}
                     messages={messages}
-                    avatar={userAvatar}
+                //avatar={userAvatar}
                 //onUpdateMessages={onUpdateMessages}
                 />
                 <ChatInput
                     loggedIn={loggedIn}
-                    onSendMessage={sendMessage}
+                //onSendMessage={sendMessage}
                 />
+
+
+
+
             </section>
         </main>
     )

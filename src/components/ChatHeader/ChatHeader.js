@@ -23,9 +23,9 @@ function ChatHeader({ submitHandler, setPreloader, currentUser, loggedIn, setLog
         setAvatarLoaded(true)
     }
 
-    const editProfileData = () => {
+    /*const editProfileData = () => {
         setLoggedIn(false)
-    }
+    }*/
 
     const saveUserData = (e) => {
         e.preventDefault()
@@ -46,7 +46,8 @@ function ChatHeader({ submitHandler, setPreloader, currentUser, loggedIn, setLog
                 <div className='chatHeader__profile'>
                     <img src={currentUser.avatar} alt='аватар пользователя' className='chatHeader__avatar'></img>
                     <h2 className='chatHeader__username'>{currentUser.username}</h2>
-                    <button type='button' className='chatHeader__edit-button' onClick={editProfileData}
+                    <button type='button' className='chatHeader__edit-button' 
+                    //onClick={editProfileData}
                     >
                         <img className='chatHeader__button-image' src={editButton} alt='редактировать профиль'></img>
                     </button>

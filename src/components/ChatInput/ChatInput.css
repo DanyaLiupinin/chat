@@ -1,11 +1,12 @@
 .chatInput {
-    height: 7%;
+    height: 10%;
     position: relative;
     background-color: white;
     border-radius: 0 0 10px 10px;
     font-family: 'Circe';
     font-style: normal;
     transition: .8s;
+    box-sizing: border-box;
 }
 
 .chatInput__form {
@@ -15,18 +16,35 @@
 .chatInput__input {
     outline: none;
     margin: 0;
-    padding: 0;
+    padding: 10px 0 10px 10px;
     border: 0;
-    height: 100%;
+    height:75%;
     width: 90%;
     border-radius: 0 0 0 10px;
-    padding-left: 10px;
     font-weight: 400;
     font-size: 20px;
     line-height: 29px;
-    overflow: scroll;
+    box-sizing: border-box;
 }
 
+.chatInput__caption {
+    position: absolute;
+    bottom: -13px;
+    left: 7px;
+    color: gray;
+}
+
+textarea {width:200px;height:80px;resize:none;}
+textarea::-webkit-scrollbar { 
+  width: 6px; 
+  height: 6px; 
+}
+
+textarea::-webkit-scrollbar-thumb:vertical { 
+  height: 5px; 
+  background-color: #87aaed; 
+  border-radius: 50px;
+} 
 
 .chatInput__input::placeholder {
     font-weight: 300;

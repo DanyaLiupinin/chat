@@ -8,7 +8,20 @@
     background-size: 280%;
     position: relative;
     transition: .8s;
+    overflow-x:hidden;  /*для горизонтального*/
 }
+  
+  .chatSection::-webkit-scrollbar {
+    width: 0.8em;
+    background: #b6dcf9;
+    border-radius: 50px;
+  }
+  
+  .chatSection::-webkit-scrollbar-thumb {
+    background: #6897ed;
+    border-radius: 50px;
+    position: relative;
+  }
 
 @media (max-width: 900px) {
     .chatSection {

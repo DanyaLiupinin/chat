@@ -2,36 +2,29 @@ import { useState } from 'react'
 import './ChatInput.css'
 import sendMessage from '../../images/sendmessage.svg'
 
-function ChatInput({ onSendMessage, loggedIn }) {
+function ChatInput({ onSendMessage, loggedIn, currentUser }) {
 
-    //const [message, setMessage] = useState('')
-    const [messageData, setMessageData] = useState({});
-
-    function handleChange(e) {
-        const { name, value } = e.target;
-        setMessageData({
-            ...messageData,
-            [name]: value
-        });
-    };
+    const [message, setMessage] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onSendMessage(messageData);
-        setMessageData({});
-      }
+
+        onSendMessage(message);
+
+        setMessage('');
+    }
 
 
     return (
         <div className='chatInput'>
-
-            <form className={`chatInput__form ${!loggedIn ? 'inactive' : ''}`} onSubmit={handleSubmit} disabled={!loggedIn ? true : false}>
-                <input className='chatInput__input' type='text' name='message' readOnly={!loggedIn ? true : false} placeholder='введите сообщение' onChange={handleChange} value={messageData.message || ''}></input>
-                <button className={`chatInput__submit-button ${!messageData.message ? 'chatInput__submit-button_inactive' : ''}`} type='submit'>
+            <form className={`chatInput__form ${!loggedIn ? 'inactive' : ''}`} onSubmit={handleSubmit} disabled={!loggedIn || message === '' ? true : false}>
+                <textarea className='chatInput__input' type='text' name='message' readOnly={!loggedIn ? true : false} placeholder='введите сообщение' onChange={(e) => { setMessage(e.target.value) }} value={message || ''}></textarea>
+                <button className={`chatInput__submit-button ${!message === '' ? 'chatInput__submit-button_inactive' : ''}`} type='submit'>
                     <img className='chatInput__submit-image' alt='send message' src={sendMessage}></img>
                 </button>
+                
             </form>
-
+            <p className='chatInput__caption'>для отправки нажмите tab+enter</p>
         </div>
     )
 }

@@ -18,7 +18,6 @@ function Main() {
     // создать контекст пользователя
 
     const [loggedIn, setLoggedIn] = useState(false)
-    const [messages, setMessages] = useState([]);
     const [preloader, setPreloader] = useState(false)
     const [infoPopup, setInfoPopup] = useState(true)
 
@@ -26,6 +25,7 @@ function Main() {
 
     const [currentUser, setCurrentUser] = useState({});
     const [users, setUsers] = useState([])
+    const [messages, setMessages] = useState([]);
 
     const signIn = ({ username, userAvatar }) => {
 
@@ -57,8 +57,57 @@ function Main() {
         setInfoPopup(false)
     }
 
-    const updateUserList = () => {
+    const sendMessage = (message) => {
 
+        const messageData = {
+            date: Date.now(),
+            userName: currentUser.username,
+            userId: currentUser.id,
+            message
+        }
+
+        updateMessages(messageData)
+    }
+
+    const updateMessages = (data = {}) => {
+
+        const messages = localStorage.getItem('allMessages');
+        const messagesArray = Boolean(messages) ? JSON.parse(messages) : [];
+
+        messagesArray.push(data);
+
+        const sortedMessagesArray = sortArray(messagesArray.filter((item) => {
+            const valArr = Object.values(item);
+            return Boolean(valArr[0]);
+        }), 'date').reverse()
+
+        localStorage.setItem('allMessages', JSON.stringify(sortedMessagesArray));
+        setMessages(sortedMessagesArray);
+    }
+
+    function sortArray(arr, key = '') {
+
+        const sortedArray = arr.map((item, index) => {
+            return {
+                index: index,
+                value: Boolean(key) ? item[key] : item[Object.keys(item)[0]],
+            };
+
+        });
+
+        sortedArray.sort((a, b) => {
+            if (a.value > b.value) {
+                return 1;
+            }
+            if (a.value < b.value) {
+                return -1;
+            }
+            return 0;
+        });
+        return sortedArray.map((item) => arr[item.index]);
+    }
+
+    const updateUserList = () => {
         if (localStorage.getItem('allUsers')) {
             const allUsers = JSON.parse(localStorage.getItem('allUsers'));
             setUsers(allUsers)
@@ -95,9 +144,11 @@ function Main() {
     React.useEffect(() => {
 
         updateUserList();
+        updateMessages()
 
         window.addEventListener('storage', () => {
             updateUserList();
+            updateMessages()
         });
 
     }, []);
@@ -129,21 +180,18 @@ function Main() {
                     users={users}
                 />
 
-
-
                 <ChatSection
                     loggedIn={loggedIn}
                     messages={messages}
+                    currentUser={currentUser}
                 //avatar={userAvatar}
                 //onUpdateMessages={onUpdateMessages}
                 />
                 <ChatInput
+                    currentUser={currentUser}
                     loggedIn={loggedIn}
-                //onSendMessage={sendMessage}
+                    onSendMessage={sendMessage}
                 />
-
-
-
 
             </section>
         </main>

@@ -1,12 +1,9 @@
 .message {
     display: flex;
     flex-direction: row;
-    min-height: 55px;
     font-family: 'Circe';
     font-style: normal;
-}
-
-.message:not(:first-child) {
+    margin-top: 10px;
     margin-bottom: 10px;
 }
 
@@ -23,11 +20,27 @@
 
 .message__text-container {
     padding-left: 20px;
-    max-width: 80%;
+    width: 80%;
     word-break: break-all;
     display: flex;
     align-items: center;
+    border-radius: 10px;
+    height: fit-content;
+    word-break: break-all;
+}
+
+.message__text-container_type_mine {
+    background-color: #42A5F0;
+    justify-content: flex-end;
+    margin: 0 10px 0 auto;
+    padding-right: 10px;
+}
+
+.message__text-container_type_notmine {
+    background-color: #FFFFFF;
     justify-content: flex-start;
+    padding-left: 10px;
+    margin-left: 10px;
 }
 
 .message__text {

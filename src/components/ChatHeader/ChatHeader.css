@@ -209,7 +209,7 @@ font-size: 18px;
 @media (max-width: 405px) {
 
     .chatHeader {
-        height: 25%;
+        height: 20%;
     }
 
     .chatHeader__profile {
@@ -223,8 +223,8 @@ font-size: 18px;
     }
 
     .chatHeader__avatar {
-        width: 100px;
-        height: 100px;
+        width: 80px;
+        height: 80px;
         margin-top: 20px;
     }
 
@@ -239,13 +239,13 @@ font-size: 18px;
     }
 
     .chatHeader__photo-container {
-        width: 100px;
-        height: 100px;
+        width: 80px;
+        height: 80px;
         margin-top: 20px;
     }
 
     .chatHeader__input-button_type_name {
-        margin: auto 0;
+        margin: 0;
         padding: 0;
     }
 

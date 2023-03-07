@@ -77,7 +77,7 @@ function ChatHeader({ submitHandler, setPreloader, currentUser, loggedIn, users 
                         }}
                         name='username' type='text' placeholder='введите имя' value={username} required></input>
                     <span className={`chatHeader__input-error ${usernameError ? 'chatHeader__input-error_active' : ''} `}>Такой пользователь уже зарегистрирован</span>
-                    <button className='chatHeader__submit-button' type='submit'>
+                    <button className={`chatHeader__submit-button ${usernameError || username === '' ? 'chatHeader__submit-button_disabled' : ''} `} type='submit' disabled={usernameError ? true : false} >
                         <img className='chatHeader__submit-image' src={galochka} alt='сохранить данные'></img>
                     </button>
                 </form>

@@ -1,6 +1,6 @@
 .chatHeader {
     background-color: azure;
-    height: 10%;
+    height: 12%;
     border-radius: 10px 10px 0 0;
 
     font-family: 'Circe';
@@ -106,6 +106,12 @@ font-size: 18px;
     margin-left: 10%;
     cursor: pointer;
     position: relative;
+    transition: .5s;
+}
+
+.chatHeader__submit-button_disabled {
+    cursor: default;
+    opacity: .5;
 }
 
 .chatHeader__submit-image {
@@ -163,8 +169,8 @@ font-size: 18px;
 .chatHeader__input-error {
     font-size: 10px;
     position: absolute;
-    bottom: 5px;
-    left: 140px;
+    bottom: 7%;
+    left: 19%;
     color: red;
     display: none;
 }

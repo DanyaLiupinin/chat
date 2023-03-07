@@ -29,9 +29,10 @@
 
 .chatInput__caption {
     position: absolute;
-    bottom: -13px;
+    bottom: -8px;
     left: 7px;
     color: gray;
+    font-size: 12px;
 }
 
 textarea {width:200px;height:80px;resize:none;}

@@ -111,7 +111,7 @@ font-size: 18px;
 
 .chatHeader__submit-button_disabled {
     cursor: default;
-    opacity: .5;
+    opacity: .4;
 }
 
 .chatHeader__submit-image {
@@ -188,6 +188,11 @@ font-size: 18px;
         margin-left: 7%;
     }
 
+    .chatHeader__input-error {
+        left: 22%;
+        bottom: 12%;
+    }
+
 }
 
 @media (max-width: 750px) {
@@ -246,6 +251,11 @@ font-size: 18px;
 
     .chatHeader__submit-button {
         margin: 0 0 20px 0;
+    }
+
+    .chatHeader__input-error {
+        bottom: 25%;
+        left: 20%;
     }
 
 }

@@ -5,16 +5,26 @@ import photo from '../../images/photo.png'
 import editButton from '../../images/editbutton.png'
 import defaultAvatar from '../../images/defaultavatar.png'
 
-function ChatHeader({ submitHandler, setPreloader, currentUser, loggedIn, setLoggedIn }) {
+function ChatHeader({ submitHandler, setPreloader, currentUser, loggedIn, users }) {
 
     //const [avatarURL, setAvatarURL] = useState('')
     const [username, setUsername] = useState('')
     const [userAvatar, setUserAvatar] = useState(defaultAvatar)
     const [avatarLoaded, setAvatarLoaded] = useState(false)
-
+    const [usernameError, setUsernameError] = useState(false)
 
     //const [isUserCreated, setIsUserCreated] = useState(false)
 
+    const usernameValidation = (data) => {
+        for (let i = 0; i < users.length; ++i) {
+            if (users[i].username === data) {
+                setUsernameError(true)
+                return
+            } else {
+                setUsernameError(false)
+            }
+        }
+    }
 
     function onAvatarChange(e) {
         const avatar = e.target.files[0]
@@ -22,10 +32,6 @@ function ChatHeader({ submitHandler, setPreloader, currentUser, loggedIn, setLog
         setUserAvatar(avatarURL)
         setAvatarLoaded(true)
     }
-
-    /*const editProfileData = () => {
-        setLoggedIn(false)
-    }*/
 
     const saveUserData = (e) => {
         e.preventDefault()
@@ -46,15 +52,14 @@ function ChatHeader({ submitHandler, setPreloader, currentUser, loggedIn, setLog
                 <div className='chatHeader__profile'>
                     <img src={currentUser.avatar} alt='аватар пользователя' className='chatHeader__avatar'></img>
                     <h2 className='chatHeader__username'>{currentUser.username}</h2>
-                    <button type='button' className='chatHeader__edit-button' 
+                    <button type='button' className='chatHeader__edit-button'
                     //onClick={editProfileData}
                     >
                         <img className='chatHeader__button-image' src={editButton} alt='редактировать профиль'></img>
                     </button>
                 </div> :
 
-                <form className='chatHeader__form' onSubmit={saveUserData}
-                >
+                <form className='chatHeader__form' onSubmit={saveUserData}>
                     <label className='chatHeader__label_type_avatar'>
                         <input type='file' className='chatHeader__input chatHeader__input_type_avatar' onChange={onAvatarChange}
                             placeholder='добавьте аватарку'></input>
@@ -65,8 +70,13 @@ function ChatHeader({ submitHandler, setPreloader, currentUser, loggedIn, setLog
 
                         </div>
                     </label>
-                    <input className='chatHeader__input chatHeader__input-button_type_name' onChange={(e) => { setUsername(e.target.value) }}
+                    <input className='chatHeader__input chatHeader__input-button_type_name'
+                        onChange={(e) => {
+                            setUsername(e.target.value)
+                            usernameValidation(e.target.value)
+                        }}
                         name='username' type='text' placeholder='введите имя' value={username} required></input>
+                    <span className={`chatHeader__input-error ${usernameError ? 'chatHeader__input-error_active' : ''} `}>Такой пользователь уже зарегистрирован</span>
                     <button className='chatHeader__submit-button' type='submit'>
                         <img className='chatHeader__submit-image' src={galochka} alt='сохранить данные'></img>
                     </button>

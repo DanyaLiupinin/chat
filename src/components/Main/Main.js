@@ -173,6 +173,7 @@ function Main() {
                     setPreloader={setPreloader}
                     submitHandler={signIn}
                     currentUser={currentUser}
+                    users={users}
                 />
 
                 <UserList

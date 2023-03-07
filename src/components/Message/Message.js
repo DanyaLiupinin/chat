@@ -6,7 +6,6 @@ function Message (props) {
         <div className='message'>
             <div className={`message__text-container ${props.messageUser === props.currentUser.username ? 'message__text-container_type_mine' : 'message__text-container_type_notmine'}`}>
                 <p className='message__text'>{props.text}</p>
-                {console.log(props.currentUser)}
             </div>
         </div>
     )

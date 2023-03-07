@@ -72,3 +72,9 @@
 .userlist__users_active {
     display: block;
 }
+
+@media (max-width: 450px) {
+    .userlist__users {
+        top: 55px;
+    }
+}

@@ -16,8 +16,45 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    max-width: 675px;
 }
 
 .popup__greeting {
     font-size: 20px;
+    margin: 0 0 15px 0;
+}
+
+.popup__caption {
+    padding: 0 10px;
+}
+
+@media (max-width: 984px) {
+    .popup {
+        width: 390px;
+    }
+}
+
+@media (max-width: 750px) {
+    .popup {
+        width: 300px;
+    }
+
+    .popup__greeting {
+        font-size: 15px;
+    }
+
+    .popup__caption {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 405px) {
+    .popup {
+        top: 40%;
+        width: 250px;
+    }
+
+    .popup__caption {
+        padding: 0 10px;
+    }
 }

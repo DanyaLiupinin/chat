@@ -179,6 +179,10 @@ font-size: 18px;
     display: block;
 }
 
+.chatHeader__burger-button {
+    display: none;
+}
+
 @media (max-width: 900px) {
     .chatHeader__input-button_type_name {
         margin-left: 7%;
@@ -207,13 +211,14 @@ font-size: 18px;
 }
 
 @media (max-width: 405px) {
-
+    
     .chatHeader {
         height: 20%;
     }
 
     .chatHeader__profile {
         flex-direction: column;
+        position: inherit;
     }
 
     .chatHeader__username {
@@ -226,6 +231,7 @@ font-size: 18px;
         width: 80px;
         height: 80px;
         margin-top: 20px;
+        margin-left: 0;
     }
 
     .chatHeader__edit-button {

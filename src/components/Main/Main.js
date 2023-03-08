@@ -7,21 +7,13 @@ import UserList from '../UserList/UserList'
 import InfoPopup from '../InfoPopup/InfoPopup'
 import Preloader from '../Preloader/Preloader'
 
-import userNotFound from '../../images/usernotfound.png'
-
 import { useEffect, useState } from 'react'
 
-
 function Main() {
-
-    // кастомизировать скролл
-    // создать контекст пользователя
 
     const [loggedIn, setLoggedIn] = useState(false)
     const [preloader, setPreloader] = useState(false)
     const [infoPopup, setInfoPopup] = useState(true)
-
-
 
     const [currentUser, setCurrentUser] = useState({});
     const [users, setUsers] = useState([])
@@ -208,12 +200,6 @@ export default Main
 // подумать как изящно закинуть валидацию в отедльную папку
 
 // добавить redux для прокидывания всех пользователей (потом, в конце)
-
-// добавить бургер профиля на мобилке
-
-// сделать редактирование профиля 
-
-// сделать аватарки
 
 // сделать logout
 

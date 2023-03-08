@@ -85,7 +85,6 @@
 }
 
 .message__avatar-container {
-    outline: 1px solid red;
     width: 40px;
     height: 100%;
     margin: 0 1%;
@@ -101,5 +100,14 @@
 @media (max-width: 435px) {
     .message__text-container {
         max-width: 78%;
+    }
+
+    .message__avatar-container {
+        width: 35px;
+    }
+
+    .message__avatar {
+        width: 35px;
+        height: 35px;
     }
 }

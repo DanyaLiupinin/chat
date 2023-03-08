@@ -73,8 +73,8 @@
     display: block;
 }
 
-@media (max-width: 450px) {
+@media (max-width: 1250px) {
     .userlist__users {
-        top: 55px;
+        top: 25px
     }
 }

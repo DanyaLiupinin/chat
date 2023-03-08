@@ -142,7 +142,10 @@ function Main() {
     }, [])
 
     React.useEffect(() => {
-
+if (!loggedIn) {
+    updateUserList();
+    return
+}
         updateUserList();
         updateMessages()
 
@@ -151,7 +154,7 @@ function Main() {
             updateMessages()
         });
 
-    }, []);
+    }, [loggedIn]);
 
     return (
         <main className='main'>
@@ -200,6 +203,10 @@ function Main() {
 }
 
 export default Main
+
+// подумать как изящно закинуть валидацию в отедльную папку
+
+// добавить redux для прокидывания всех пользователей (потом, в конце)
 
 // добавить бургер профиля на мобилке
 

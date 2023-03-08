@@ -15,9 +15,9 @@ function ChatHeader({ submitHandler, setPreloader, currentUser, loggedIn, users 
 
     //const [isUserCreated, setIsUserCreated] = useState(false)
 
-    const usernameValidation = (data) => {
+    const usernameValidation = (data, userlist = users) => {
         for (let i = 0; i < users.length; ++i) {
-            if (users[i].username === data) {
+            if (userlist[i].username === data) {
                 setUsernameError(true)
                 return
             } else {

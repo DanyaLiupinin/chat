@@ -62,6 +62,7 @@ function Main() {
         const messageData = {
             date: Date.now(),
             userName: currentUser.username,
+            userAvatar: currentUser.avatar,
             userId: currentUser.id,
             message
         }

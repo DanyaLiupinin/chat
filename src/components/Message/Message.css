@@ -41,7 +41,7 @@
 
 .message__container {
     padding-left: 20px;
-    width: 80%;
+    width: 70%;
     word-break: break-all;
     display: flex;
     border-radius: 10px;
@@ -84,6 +84,19 @@
     vertical-align: middle;
 }
 
+.message__avatar-container {
+    outline: 1px solid red;
+    width: 40px;
+    height: 100%;
+    margin: 0 1%;
+    display: flex;
+}
+
+.message__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
 
 @media (max-width: 435px) {
     .message__text-container {

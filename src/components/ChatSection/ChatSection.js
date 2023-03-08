@@ -14,7 +14,8 @@ function ChatSection({ messages, loggedIn, currentUser }) {
                             key={message.date}
                             text={message.message}
                             messageId={message.date}
-                            messageUser={message.userName}
+                            messageOwner={message.userName}
+                            messageOwnerAvatar={message.userAvatar}
                             //avatar={message.avatar}
                             currentUser={currentUser}
                         />

@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/DanyaLiupinin/chat/static/css/main.a4afbbc3.css",
-    "main.js": "/DanyaLiupinin/chat/static/js/main.b2158771.js",
+    "main.css": "/DanyaLiupinin/chat/static/css/main.ef6f5471.css",
+    "main.js": "/DanyaLiupinin/chat/static/js/main.b71171a6.js",
     "static/js/787.35cea4b2.chunk.js": "/DanyaLiupinin/chat/static/js/787.35cea4b2.chunk.js",
     "static/media/background.png": "/DanyaLiupinin/chat/static/media/background.b6abb686217f80317a48.png",
     "static/media/chatbackground.png": "/DanyaLiupinin/chat/static/media/chatbackground.3ebeef4e7910d9f33a30.png",
@@ -11,12 +11,12 @@
     "static/media/photo.png": "/DanyaLiupinin/chat/static/media/photo.8863c1d2789825f76759.png",
     "index.html": "/DanyaLiupinin/chat/index.html",
     "static/media/sendmessage.svg": "/DanyaLiupinin/chat/static/media/sendmessage.7297d44ed031f0cbaa01787af87dd429.svg",
-    "main.a4afbbc3.css.map": "/DanyaLiupinin/chat/static/css/main.a4afbbc3.css.map",
-    "main.b2158771.js.map": "/DanyaLiupinin/chat/static/js/main.b2158771.js.map",
+    "main.ef6f5471.css.map": "/DanyaLiupinin/chat/static/css/main.ef6f5471.css.map",
+    "main.b71171a6.js.map": "/DanyaLiupinin/chat/static/js/main.b71171a6.js.map",
     "787.35cea4b2.chunk.js.map": "/DanyaLiupinin/chat/static/js/787.35cea4b2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a4afbbc3.css",
-    "static/js/main.b2158771.js"
+    "static/css/main.ef6f5471.css",
+    "static/js/main.b71171a6.js"
   ]
 }

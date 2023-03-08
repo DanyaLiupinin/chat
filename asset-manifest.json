@@ -1,22 +1,24 @@
 {
   "files": {
-    "main.css": "/DanyaLiupinin/chat/static/css/main.ef6f5471.css",
-    "main.js": "/DanyaLiupinin/chat/static/js/main.b71171a6.js",
+    "main.css": "/DanyaLiupinin/chat/static/css/main.e550432c.css",
+    "main.js": "/DanyaLiupinin/chat/static/js/main.7fd98bae.js",
     "static/js/787.35cea4b2.chunk.js": "/DanyaLiupinin/chat/static/js/787.35cea4b2.chunk.js",
     "static/media/background.png": "/DanyaLiupinin/chat/static/media/background.b6abb686217f80317a48.png",
     "static/media/chatbackground.png": "/DanyaLiupinin/chat/static/media/chatbackground.3ebeef4e7910d9f33a30.png",
     "static/media/Circe-Light.woff": "/DanyaLiupinin/chat/static/media/Circe-Light.0a23696bc00e1131f434.woff",
     "static/media/Circe-Regular.woff": "/DanyaLiupinin/chat/static/media/Circe-Regular.a5168fcec068fa77220a.woff",
-    "static/media/defaultavatar.png": "/DanyaLiupinin/chat/static/media/defaultavatar.7b1569a543f8bf0a45e0.png",
+    "static/media/defaultavatar.png": "/DanyaLiupinin/chat/static/media/defaultavatar.eb1f5b649fbae490ee4b.png",
+    "static/media/usernotfound.png": "/DanyaLiupinin/chat/static/media/usernotfound.d021cda28180c2dd8b4e.png",
     "static/media/photo.png": "/DanyaLiupinin/chat/static/media/photo.8863c1d2789825f76759.png",
+    "static/media/editbutton.png": "/DanyaLiupinin/chat/static/media/editbutton.91bf8a6ae01bbb313665.png",
     "index.html": "/DanyaLiupinin/chat/index.html",
     "static/media/sendmessage.svg": "/DanyaLiupinin/chat/static/media/sendmessage.7297d44ed031f0cbaa01787af87dd429.svg",
-    "main.ef6f5471.css.map": "/DanyaLiupinin/chat/static/css/main.ef6f5471.css.map",
-    "main.b71171a6.js.map": "/DanyaLiupinin/chat/static/js/main.b71171a6.js.map",
+    "main.e550432c.css.map": "/DanyaLiupinin/chat/static/css/main.e550432c.css.map",
+    "main.7fd98bae.js.map": "/DanyaLiupinin/chat/static/js/main.7fd98bae.js.map",
     "787.35cea4b2.chunk.js.map": "/DanyaLiupinin/chat/static/js/787.35cea4b2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ef6f5471.css",
-    "static/js/main.b71171a6.js"
+    "static/css/main.e550432c.css",
+    "static/js/main.7fd98bae.js"
   ]
 }

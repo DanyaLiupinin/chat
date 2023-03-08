@@ -1,5 +1,7 @@
 import './Message.css'
 
+import userNotFound from '../../images/usernotfound.png'
+
 function Message(props) {
 
     return (
@@ -18,20 +20,15 @@ function Message(props) {
                             </div>
                         </div>
                         <div className='message__avatar-container message__avatar-container_type_mine'>
-
-                            <img className='message__avatar' src={props.currentUser.avatar} alt='моя аватарка'></img>
-
+                            <p className='message__avatar message__avatar_type_mine'>{props.messageOwner.slice(0, 1).toUpperCase()}</p>
                         </div>
-
                     </>
 
                     :
 
                     <>
-                        <div className='message__avatar-container message__avatar-container_type_mine'>
-
-                            <img className='message__avatar' src={props.messageOwnerAvatar} alt='моя аватарка'></img>
-
+                        <div className='message__avatar-container message__avatar-container_type_mine'>    
+                            <p className='message__avatar message__avatar_type_notmine'>{props.messageOwner.slice(0, 1).toUpperCase()}</p>
                         </div>
                         <div className='message__container message__container_type_notmine'>
                             <div className='message__name-container message__name-container_type_notmine'>

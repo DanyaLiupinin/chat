@@ -7,7 +7,7 @@ import UserList from '../UserList/UserList'
 import InfoPopup from '../InfoPopup/InfoPopup'
 import Preloader from '../Preloader/Preloader'
 
-import { BroadcastChannel } from 'broadcast-channel';
+import userNotFound from '../../images/usernotfound.png'
 
 import { useEffect, useState } from 'react'
 
@@ -74,7 +74,7 @@ function Main() {
 
         const messages = localStorage.getItem('allMessages');
         const messagesArray = Boolean(messages) ? JSON.parse(messages) : [];
-
+        
         messagesArray.push(data);
 
         const sortedMessagesArray = sortArray(messagesArray.filter((item) => {

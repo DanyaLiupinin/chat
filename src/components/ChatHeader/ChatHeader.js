@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import './ChatHeader.css'
 import galochka from '../../images/galochka.png'
 import photo from '../../images/photo.png'
 import editButton from '../../images/editbutton.png'
 import defaultAvatar from '../../images/defaultavatar.png'
+
+import userNotFound from '../../images/usernotfound.png'
 
 function ChatHeader({ submitHandler, setPreloader, currentUser, loggedIn, users }) {
 
@@ -57,8 +59,8 @@ function ChatHeader({ submitHandler, setPreloader, currentUser, loggedIn, users 
                     >
                         <img className='chatHeader__button-image' src={editButton} alt='редактировать профиль'></img>
                     </button>
-                </div> :
-
+                </div> 
+                :
                 <form className='chatHeader__form' onSubmit={saveUserData}>
                     <label className='chatHeader__label_type_avatar'>
                         <input type='file' className='chatHeader__input chatHeader__input_type_avatar' onChange={onAvatarChange}

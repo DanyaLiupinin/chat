@@ -166,7 +166,9 @@ function Main() {
                 }
 
                 {exitPopup ?
-                    <ExitPopup /> :
+                    <ExitPopup 
+                        setExitPopup={setExitPopup}
+                    /> :
                     ''
                 }
 

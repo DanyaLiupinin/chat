@@ -30,8 +30,28 @@
     background-color: white;
     border-radius: 10px;
     border: 1px solid rgb(26, 138, 223);
+    cursor: pointer;
 }
 
 .exitPopup__button:last-child {
     margin-top: 30px;
 }
+
+.exitPopup__button_type_сlose {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+
+    width: 20px;
+    height: 20px;
+    border-radius: 0;
+    background-color: unset;
+    border: none;
+    cursor: pointer;
+}
+
+.exitPopup__button-image_type_delete {
+    width: 100%;
+}
+
+/* добавить ховеры */

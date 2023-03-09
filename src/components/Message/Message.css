@@ -40,7 +40,7 @@
 }
 
 .message__container {
-    padding-left: 20px;
+    padding-left: 10px;
     width: 70%;
     word-break: break-all;
     display: flex;
@@ -59,6 +59,7 @@
 .message__container_type_notmine {
     background-color: #FFFFFF;
     padding-left: 10px;
+    padding-right: 10px;
     margin-left: 10px;
 }
 
@@ -109,9 +110,7 @@
 }
 
 @media (max-width: 435px) {
-    .message__text-container {
-        max-width: 78%;
-    }
+
 
     .message__avatar-container {
         width: 35px;

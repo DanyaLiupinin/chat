@@ -29,7 +29,7 @@ function ChatInput({ onSendMessage, loggedIn }) {
                 <textarea className='chatInput__input' type='text' name='message' readOnly={!loggedIn ? true : false} placeholder='введите сообщение' onChange={(e) => {
                     setMessage(e.target.value)
                     setInputValidity(inputValidation(e.target.value))
-                }} value={message || ''}></textarea>
+                }} value={message || ''} maxLength='150' ></textarea>
                 <button className={`chatInput__submit-button ${!inputValidity ? 'chatInput__submit-button_inactive' : ''}`} type='submit' disabled={!loggedIn || !inputValidity ? true : false}>
                     <img className='chatInput__submit-image' alt='send message' src={sendMessage}></img>
                 </button>

@@ -7,7 +7,7 @@ import defaultAvatar from '../../images/defaultavatar.png'
 
 import userNotFound from '../../images/usernotfound.png'
 
-function ChatHeader({ submitHandler, setPreloader, currentUser, loggedIn, users }) {
+function ChatHeader({ submitHandler, setPreloader, currentUser, loggedIn, users, exitPopup, setExitPopup }) {
 
     //const [avatarURL, setAvatarURL] = useState('')
     const [username, setUsername] = useState('')
@@ -35,6 +35,10 @@ function ChatHeader({ submitHandler, setPreloader, currentUser, loggedIn, users 
         setAvatarLoaded(true)
     }
 
+    const onSettingPopup = () => {
+        setExitPopup(!exitPopup)
+    }
+
     const saveUserData = (e) => {
         e.preventDefault()
         setPreloader(true)
@@ -54,8 +58,7 @@ function ChatHeader({ submitHandler, setPreloader, currentUser, loggedIn, users 
                 <div className='chatHeader__profile'>
                     <img src={currentUser.avatar} alt='аватар пользователя' className='chatHeader__avatar'></img>
                     <h2 className='chatHeader__username'>{currentUser.username}</h2>
-                    <button type='button' className='chatHeader__edit-button'
-                    //onClick={editProfileData}
+                    <button type='button' className='chatHeader__edit-button' onClick={onSettingPopup}
                     >
                         <img className='chatHeader__button-image' src={editButton} alt='редактировать профиль'></img>
                     </button>

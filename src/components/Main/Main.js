@@ -15,7 +15,7 @@ function Main() {
     const [loggedIn, setLoggedIn] = useState(false)
     const [preloader, setPreloader] = useState(false)
     const [infoPopup, setInfoPopup] = useState(true)
-    const [exitPopup, setExitPopup] = useState(true)
+    const [exitPopup, setExitPopup] = useState(false)
 
     const [currentUser, setCurrentUser] = useState({});
     const [users, setUsers] = useState([])
@@ -177,6 +177,8 @@ function Main() {
                     submitHandler={signIn}
                     currentUser={currentUser}
                     users={users}
+                    exitPopup={exitPopup}
+                    setExitPopup={setExitPopup}
                 />
 
                 <UserList

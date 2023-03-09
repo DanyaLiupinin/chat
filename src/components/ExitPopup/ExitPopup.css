@@ -20,6 +20,7 @@
 
     font-family: 'Circe';
     font-style: normal;
+    transition: .5s;
 }
 
 .exitPopup__button {

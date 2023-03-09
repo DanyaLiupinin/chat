@@ -131,26 +131,13 @@ function Main() {
             setUsers(newUserList)
             localStorage.setItem('allUsers', JSON.stringify(newUserList))
         }
-
     }
 
-    /*
-    const signOut = () => {
-        
-        sessionStorage.clear()
-
-        if (localStorage.getItem('allUsers')) {
-
-            const allUsers = JSON.parse(localStorage.getItem('allUsers'));
-            const currentUserId = currentUser.id
-            
-            const newUserList = allUsers.filter((user) => {
-                return user.id !== currentUserId
-            })
-
-            setUsers(newUserList)
-        }
-    } */
+    const clearChat = () => {
+        localStorage.setItem('allMessages', [])
+        updateMessages()
+        setExitPopup(false)
+    }
 
     useEffect(() => {
         if (sessionStorage.getItem('currentUser')) {
@@ -196,6 +183,7 @@ function Main() {
                     <ExitPopup 
                         setExitPopup={setExitPopup}
                         onSignOut={signOutHandler}
+                        clearChat={clearChat}
                     /> :
                     ''
                 }
@@ -236,9 +224,11 @@ function Main() {
 
 export default Main
 
-// подумать как изящно закинуть валидацию в отедльную папку
+// изменить название exitpopup
 
-// сделать logout
+// баг с отправкой пустой строчки
+
+// подумать как изящно закинуть валидацию в отедльную папку
 
 // рефакторинг
 

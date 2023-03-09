@@ -25,14 +25,17 @@
     font-size: 20px;
     line-height: 29px;
     box-sizing: border-box;
+
+    white-space: nowrap;
 }
 
 .chatInput__caption {
     position: absolute;
     bottom: -8px;
     left: 7px;
-    color: gray;
+    color: #00000085;
     font-size: 12px;
+    font-weight: 200;
 }
 
 textarea {width:200px;height:80px;resize:none;}

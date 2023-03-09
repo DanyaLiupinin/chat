@@ -109,6 +109,27 @@ function Main() {
         }
     }
 
+    const signOutHandler = () => {
+        sessionStorage.clear()
+        setLoggedIn(false)
+        setExitPopup(false)
+        setInfoPopup(true)
+
+        if (localStorage.getItem('allUsers')) {
+
+            const allUsers = JSON.parse(localStorage.getItem('allUsers'));
+            const currentUserId = currentUser.id
+            
+            const newUserList = allUsers.filter((user) => {
+                return user.id !== currentUserId
+            })
+
+            setUsers(newUserList)
+            localStorage.setItem('allUsers', JSON.stringify(newUserList))
+        }
+
+    }
+
     /*
     const signOut = () => {
         
@@ -168,6 +189,7 @@ function Main() {
                 {exitPopup ?
                     <ExitPopup 
                         setExitPopup={setExitPopup}
+                        onSignOut={signOutHandler}
                     /> :
                     ''
                 }

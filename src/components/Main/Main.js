@@ -114,6 +114,10 @@ function Main() {
         setLoggedIn(false)
         setExitPopup(false)
         setInfoPopup(true)
+        deleteGoneUser()
+    }
+
+    const deleteGoneUser = () => {
 
         if (localStorage.getItem('allUsers')) {
 
@@ -169,6 +173,8 @@ function Main() {
             updateUserList();
             updateMessages()
         });
+
+        window.addEventListener('unload', deleteGoneUser)
 
     }, [loggedIn]);
 

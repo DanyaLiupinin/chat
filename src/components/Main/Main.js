@@ -6,6 +6,7 @@ import ChatInput from '../ChatInput/ChatInput'
 import UserList from '../UserList/UserList'
 import InfoPopup from '../InfoPopup/InfoPopup'
 import Preloader from '../Preloader/Preloader'
+import ExitPopup from '../ExitPopup/ExitPopup'
 
 import { useEffect, useState } from 'react'
 
@@ -14,6 +15,7 @@ function Main() {
     const [loggedIn, setLoggedIn] = useState(false)
     const [preloader, setPreloader] = useState(false)
     const [infoPopup, setInfoPopup] = useState(true)
+    const [exitPopup, setExitPopup] = useState(true)
 
     const [currentUser, setCurrentUser] = useState({});
     const [users, setUsers] = useState([])
@@ -66,7 +68,7 @@ function Main() {
 
         const messages = localStorage.getItem('allMessages');
         const messagesArray = Boolean(messages) ? JSON.parse(messages) : [];
-        
+
         messagesArray.push(data);
 
         const sortedMessagesArray = sortArray(messagesArray.filter((item) => {
@@ -135,10 +137,10 @@ function Main() {
     }, [])
 
     React.useEffect(() => {
-if (!loggedIn) {
-    updateUserList();
-    return
-}
+        if (!loggedIn) {
+            updateUserList();
+            return
+        }
         updateUserList();
         updateMessages()
 
@@ -160,6 +162,11 @@ if (!loggedIn) {
 
                 {infoPopup ?
                     <InfoPopup /> :
+                    ''
+                }
+
+                {exitPopup ?
+                    <ExitPopup /> :
                     ''
                 }
 

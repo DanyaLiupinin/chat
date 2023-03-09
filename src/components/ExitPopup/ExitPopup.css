@@ -1,10 +1,36 @@
 .exitPopup {
     position: absolute;
-    top: 0;
+    top: 30%;
     left: 0;
     bottom: 0;
     right: 0;
 
-    width: 400px;
-    height: 400px;
+    margin: 0 auto;
+
+    width: 300px;
+    height: 250px;
+    background-color: rgb(126, 196, 225);
+    z-index: 1;
+
+    border-radius: 5%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+
+    font-family: 'Circe';
+    font-style: normal;
+}
+
+.exitPopup__button {
+    width: 50%;
+    padding: 10px 0;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid rgb(26, 138, 223);
+}
+
+.exitPopup__button:last-child {
+    margin-top: 30px;
 }

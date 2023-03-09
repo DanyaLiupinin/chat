@@ -9,7 +9,7 @@
 
     width: 300px;
     height: 250px;
-    background-color: rgb(104 151 237 / 70%);
+    background-color: rgb(104 151 237 / 50%);
     z-index: 1;
 
     border-radius: 5%;
@@ -53,5 +53,27 @@
 .exitPopup__button-image_type_delete {
     width: 100%;
 }
+
+@media (max-width: 750px) {
+    .exitPopup {
+        width: 250px;
+    }
+
+    .exitPopup__button {
+        width: 70%;
+    }
+
+    .exitPopup__button_type_сlose {
+        width: 20px;
+    }
+    
+}
+
+@media (max-width: 405px) {
+    .exitPopup {
+        top: 35%;
+    }    
+}
+
 
 /* добавить ховеры */

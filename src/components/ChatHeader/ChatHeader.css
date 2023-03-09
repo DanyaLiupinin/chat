@@ -213,7 +213,7 @@ font-size: 18px;
 @media (max-width: 405px) {
     
     .chatHeader {
-        height: 20%;
+        height: 30%;
     }
 
     .chatHeader__profile {
@@ -235,7 +235,7 @@ font-size: 18px;
     }
 
     .chatHeader__edit-button {
-        margin: 0 0 20px 0; 
+        margin: 10px 0; 
     }
 
     .chatHeader__form {

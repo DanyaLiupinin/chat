@@ -152,13 +152,13 @@ font-size: 18px;
     background-color: unset;
     cursor: pointer;
     padding: 0;
-    border: 1px solid black;
+    border: 2px solid #51aeef;
     width: 30px;
     height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    border-radius: 4px;
 }
 
 .chatHeader__button-image {

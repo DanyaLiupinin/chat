@@ -9,9 +9,9 @@ function ChatInput({ onSendMessage, loggedIn }) {
 
     const inputValidation = (value) => {
         if (value.trim() === '') {
-            setInputValidity(false)
+            return false
         } else {
-            setInputValidity(true)
+            return true
         }
     }
 
@@ -28,7 +28,7 @@ function ChatInput({ onSendMessage, loggedIn }) {
             <form className={`chatInput__form ${!loggedIn ? 'inactive' : ''}`} onSubmit={handleSubmit} disabled={!inputValidity ? true : false}>
                 <textarea className='chatInput__input' type='text' name='message' readOnly={!loggedIn ? true : false} placeholder='введите сообщение' onChange={(e) => {
                     setMessage(e.target.value)
-                    inputValidation(e.target.value)
+                    setInputValidity(inputValidation(e.target.value))
                 }} value={message || ''}></textarea>
                 <button className={`chatInput__submit-button ${!inputValidity ? 'chatInput__submit-button_inactive' : ''}`} type='submit' disabled={!loggedIn || !inputValidity ? true : false}>
                     <img className='chatInput__submit-image' alt='send message' src={sendMessage}></img>

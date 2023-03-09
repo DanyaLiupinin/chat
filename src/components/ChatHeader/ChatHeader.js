@@ -2,10 +2,9 @@ import { useState } from 'react'
 import './ChatHeader.css'
 import galochka from '../../images/galochka.png'
 import photo from '../../images/photo.png'
-import editButton from '../../images/editbutton.png'
+import editButton from '../../images/editbutton.svg'
 import defaultAvatar from '../../images/defaultavatar.png'
 
-import userNotFound from '../../images/usernotfound.png'
 
 function ChatHeader({ submitHandler, setPreloader, currentUser, loggedIn, users, exitPopup, setExitPopup }) {
 

@@ -28,13 +28,18 @@
     padding: 10px 0;
     margin: 0 auto;
     background-color: white;
-    border-radius: 10px;
-    border: 1px solid rgb(26, 138, 223);
+    border-radius: 12px;
+    border: 0;
     cursor: pointer;
+    transition: .3s;
 }
 
 .exitPopup__button:last-child {
     margin-top: 30px;
+}
+
+.exitPopup__button:hover {
+    opacity: .8;
 }
 
 .exitPopup__button_type_сlose {

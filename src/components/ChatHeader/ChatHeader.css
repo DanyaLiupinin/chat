@@ -109,6 +109,10 @@ font-size: 18px;
     transition: .5s;
 }
 
+.chatHeader__submit-button:hover {
+    opacity: .6;
+}
+
 .chatHeader__submit-button_disabled {
     cursor: default;
     opacity: .4;
@@ -148,7 +152,6 @@ font-size: 18px;
 .chatHeader__edit-button {
     margin-left: 10%;
     margin-right: 5%;
-    
     background-color: unset;
     cursor: pointer;
     padding: 0;
@@ -159,6 +162,11 @@ font-size: 18px;
     justify-content: center;
     align-items: center;
     border-radius: 4px;
+    transition: .3s;
+}
+
+.chatHeader__edit-button:hover {
+    opacity: .7;
 }
 
 .chatHeader__button-image {
@@ -249,7 +257,7 @@ font-size: 18px;
         height: 80px;
         margin-top: 20px;
     }
-
+    
     .chatHeader__input-button_type_name {
         margin: 10px 0 0 0;
         padding: 0;

@@ -67,6 +67,11 @@ textarea::-webkit-scrollbar-thumb:vertical {
     display: block;
     display: flex;
     transition: .2s linear;
+    cursor: pointer;
+}
+
+.chatInput__submit-button:hover {
+    opacity: .8;
 }
 
 .chatInput__submit-button_inactive {

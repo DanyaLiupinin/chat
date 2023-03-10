@@ -34,10 +34,6 @@ function ChatHeader({ submitHandler, setPreloader, currentUser, loggedIn, users,
         setAvatarLoaded(true)
     }
 
-    const onSettingPopup = () => {
-        setUtilityPopup(!utilityPopup)
-    }
-
     const saveUserData = (e) => {
         e.preventDefault()
         setPreloader(true)
@@ -57,7 +53,7 @@ function ChatHeader({ submitHandler, setPreloader, currentUser, loggedIn, users,
                 <div className='chatHeader__profile'>
                     <img src={currentUser.avatar} alt='аватар пользователя' className='chatHeader__avatar'></img>
                     <h2 className='chatHeader__username'>{currentUser.username}</h2>
-                    <button type='button' className='chatHeader__edit-button' onClick={onSettingPopup}
+                    <button type='button' className='chatHeader__edit-button' onClick={() => setUtilityPopup(true)}
                     >
                         <img className='chatHeader__button-image' src={editButton} alt='редактировать профиль'></img>
                     </button>

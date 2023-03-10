@@ -133,6 +133,7 @@
     height: 55px;
     border-radius: 100%;
     margin-left: 5%;
+    object-fit: cover;
 }
 
 .chatHeader__username {

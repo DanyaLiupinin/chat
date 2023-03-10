@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
+
 import './UserList.css'
 
 function UserList({users, loggedIn}) {
 
-
     const [userListOpened, setUserListOpened] = useState(false)
+    
     const rootEl = useRef(null);
 
     const toggleUserListOpened = () => {

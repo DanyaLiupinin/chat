@@ -140,7 +140,6 @@ function Main() {
         }, 2000)
     }
 
-
     useEffect(() => {
         if (sessionStorage.getItem('currentUser')) {
             const user = JSON.parse(sessionStorage.getItem('currentUser'))
@@ -225,11 +224,5 @@ function Main() {
 }
 
 export default Main
-
-// добавить ховер всем кнопкам
-
-// закинуть валидации в отдельные папки
-
-// рефакторинг
 
 // написать документацию 

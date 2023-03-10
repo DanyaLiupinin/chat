@@ -1,7 +1,5 @@
 import './Message.css'
 
-import userNotFound from '../../images/usernotfound.png'
-
 function Message(props) {
 
     return (
@@ -10,7 +8,6 @@ function Message(props) {
             {
                 props.messageOwner === props.currentUser.username ?
                     <>
-
                         <div className='message__container message__container_type_mine'>
                             <div className='message__name-container message__name-container_type_mine'>
                                 <p className='message__name'>{props.messageOwner}</p>
@@ -23,9 +20,7 @@ function Message(props) {
                             <p className='message__avatar message__avatar_type_mine'>{props.messageOwner.slice(0, 1).toUpperCase()}</p>
                         </div>
                     </>
-
                     :
-
                     <>
                         <div className='message__avatar-container message__avatar-container_type_mine'>    
                             <p className='message__avatar message__avatar_type_notmine'>{props.messageOwner.slice(0, 1).toUpperCase()}</p>
@@ -39,7 +34,6 @@ function Message(props) {
                             </div>
                         </div>
                     </>
-
             }
         </div>
 

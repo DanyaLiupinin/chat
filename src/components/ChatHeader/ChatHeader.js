@@ -1,35 +1,25 @@
 import { useState } from 'react'
+
 import './ChatHeader.css'
+
+import validation from '../../utils/validation'
+
 import galochka from '../../images/galochka.png'
 import photo from '../../images/photo.png'
 import editButton from '../../images/editbutton.svg'
 import defaultAvatar from '../../images/defaultavatar.png'
 
+function ChatHeader({ submitHandler, setPreloader, currentUser, loggedIn, users, setUtilityPopup }) {
 
-function ChatHeader({ submitHandler, setPreloader, currentUser, loggedIn, users, utilityPopup, setUtilityPopup }) {
-
-    //const [avatarURL, setAvatarURL] = useState('')
     const [username, setUsername] = useState('')
     const [userAvatar, setUserAvatar] = useState(defaultAvatar)
     const [avatarLoaded, setAvatarLoaded] = useState(false)
     const [usernameError, setUsernameError] = useState(false)
 
-    //const [isUserCreated, setIsUserCreated] = useState(false)
-
-    const usernameValidation = (data, userlist = users) => {
-        for (let i = 0; i < users.length; ++i) {
-            if (userlist[i].username === data) {
-                setUsernameError(true)
-                return
-            } else {
-                setUsernameError(false)
-            }
-        }
-    }
-
-    function onAvatarChange(e) {
+    const onAvatarChange = (e) => {
         const avatar = e.target.files[0]
         const avatarURL = URL.createObjectURL(avatar)
+
         setUserAvatar(avatarURL)
         setAvatarLoaded(true)
     }
@@ -37,8 +27,6 @@ function ChatHeader({ submitHandler, setPreloader, currentUser, loggedIn, users,
     const saveUserData = (e) => {
         e.preventDefault()
         setPreloader(true)
-
-
         setTimeout(() => {
             submitHandler({ username, userAvatar })
             setPreloader(false)
@@ -47,17 +35,14 @@ function ChatHeader({ submitHandler, setPreloader, currentUser, loggedIn, users,
 
     return (
         <div className='chatHeader'>
-
             {loggedIn ?
-
                 <div className='chatHeader__profile'>
                     <img src={currentUser.avatar} alt='аватар пользователя' className='chatHeader__avatar'></img>
                     <h2 className='chatHeader__username'>{currentUser.username}</h2>
-                    <button type='button' className='chatHeader__edit-button' onClick={() => setUtilityPopup(true)}
-                    >
+                    <button type='button' className='chatHeader__edit-button' onClick={() => setUtilityPopup(true)}>
                         <img className='chatHeader__button-image' src={editButton} alt='редактировать профиль'></img>
                     </button>
-                </div> 
+                </div>
                 :
                 <form className='chatHeader__form' onSubmit={saveUserData}>
                     <label className='chatHeader__label_type_avatar'>
@@ -73,7 +58,7 @@ function ChatHeader({ submitHandler, setPreloader, currentUser, loggedIn, users,
                     <input className='chatHeader__input chatHeader__input-button_type_name'
                         onChange={(e) => {
                             setUsername(e.target.value)
-                            usernameValidation(e.target.value)
+                            setUsernameError(validation.usernameValidation(e.target.value, users))
                         }}
                         name='username' type='text' placeholder='введите имя' value={username} required></input>
                     <span className={`chatHeader__input-error ${usernameError ? 'chatHeader__input-error_active' : ''} `}>Такой пользователь уже зарегистрирован</span>
@@ -81,11 +66,7 @@ function ChatHeader({ submitHandler, setPreloader, currentUser, loggedIn, users,
                         <img className='chatHeader__submit-image' src={galochka} alt='сохранить данные'></img>
                     </button>
                 </form>
-
             }
-
-
-
         </div>
     )
 }

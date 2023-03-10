@@ -18,14 +18,13 @@
     margin: 0;
     padding: 10px 0 10px 10px;
     border: 0;
-    height:75%;
+    height: 75%;
     width: 90%;
     border-radius: 0 0 0 10px;
     font-weight: 400;
     font-size: 20px;
     line-height: 29px;
     box-sizing: border-box;
-
     white-space: nowrap;
 }
 
@@ -38,17 +37,22 @@
     font-weight: 200;
 }
 
-textarea {width:200px;height:80px;resize:none;}
-textarea::-webkit-scrollbar { 
-  width: 6px; 
-  height: 6px; 
+textarea {
+    width: 200px;
+    height: 80px;
+    resize: none;
 }
 
-textarea::-webkit-scrollbar-thumb:vertical { 
-  height: 5px; 
-  background-color: #87aaed; 
-  border-radius: 50px;
-} 
+textarea::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+textarea::-webkit-scrollbar-thumb:vertical {
+    height: 5px;
+    background-color: #87aaed;
+    border-radius: 50px;
+}
 
 .chatInput__input::placeholder {
     font-weight: 300;
@@ -88,10 +92,8 @@ textarea::-webkit-scrollbar-thumb:vertical {
     .chatInput__submit-button {
         width: 30px;
         height: 30px;
-
         top: 30%;
         right: 3px;
-
     }
 
     .chatInput__submit-image {
@@ -118,5 +120,4 @@ textarea::-webkit-scrollbar-thumb:vertical {
     .chatInput__input {
         width: 83%;
     }
-
 }

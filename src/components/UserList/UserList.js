@@ -2,10 +2,11 @@ import { useState, useEffect, useRef } from 'react'
 
 import './UserList.css'
 
-function UserList({users, loggedIn}) {
+
+function UserList({ users, loggedIn }) {
 
     const [userListOpened, setUserListOpened] = useState(false)
-    
+
     const rootEl = useRef(null);
 
     const toggleUserListOpened = () => {
@@ -14,12 +15,10 @@ function UserList({users, loggedIn}) {
 
     useEffect(() => {
         const onClick = e => rootEl.current.contains(e.target) || setUserListOpened(false)
-
         document.addEventListener('click', onClick);
-
         return () => document.removeEventListener('click', onClick);
     }, []);
-    
+
 
     return (
 
@@ -35,10 +34,9 @@ function UserList({users, loggedIn}) {
                     return (
                         <p className='userlist__item' key={user.id}>{user.username}</p>
                     )
-                }) }
+                })}
             </div>
         </div>
-
     )
 }
 

@@ -2,14 +2,14 @@ import './UtilityPopup.css'
 
 import krestik from '../../images/krestik.png'
 
-const UtilityPopup = ({setExitPopup, onSignOut, clearChat}) => {
+const UtilityPopup = ({setUtilityPopup, onSignOut, clearChat}) => {
 
 
 
     return (
         
         <div className='exitPopup'>
-            <button className='exitPopup__button exitPopup__button_type_сlose' type='button' onClick={() => setExitPopup(false)} >
+            <button className='exitPopup__button exitPopup__button_type_сlose' type='button' onClick={() => setUtilityPopup(false)} >
                 <img className='exitPopup__button-image exitPopup__button-image_type_delete' alt='закрыть попап' src={krestik} ></img>
             </button>
             <button className='exitPopup__button exitPopup__button_type_clear' type='button' onClick={clearChat} >Очистить чат</button>

@@ -1,28 +1,28 @@
 import React from 'react'
+import { useEffect, useState } from 'react'
+
 import './Main.css'
+
 import ChatHeader from '../ChatHeader/ChatHeader'
 import ChatSection from '../ChatSection/ChatSection'
 import ChatInput from '../ChatInput/ChatInput'
 import UserList from '../UserList/UserList'
 import InfoPopup from '../InfoPopup/InfoPopup'
 import Preloader from '../Preloader/Preloader'
-import ExitPopup from '../UtilityPopup/UtilityPopup'
-
-import { useEffect, useState } from 'react'
+import UtilityPopup from '../UtilityPopup/UtilityPopup'
 
 function Main() {
 
     const [loggedIn, setLoggedIn] = useState(false)
-    const [preloader, setPreloader] = useState(false)
-    const [infoPopup, setInfoPopup] = useState(true)
-    const [exitPopup, setExitPopup] = useState(false)
-
     const [currentUser, setCurrentUser] = useState({});
     const [users, setUsers] = useState([])
     const [messages, setMessages] = useState([]);
 
-    const signIn = ({ username, userAvatar }) => {
+    const [preloader, setPreloader] = useState(false)
+    const [infoPopup, setInfoPopup] = useState(true)
+    const [utilityPopup, setUtilityPopup] = useState(false)
 
+    const signIn = ({ username, userAvatar }) => {
         const newUser = {
             username: username,
             avatar: userAvatar,
@@ -30,7 +30,6 @@ function Main() {
         }
 
         setCurrentUser(newUser)
-
         sessionStorage.setItem('currentUser', JSON.stringify(newUser))
 
         if (users.length > 0) {
@@ -42,7 +41,6 @@ function Main() {
         if (localStorage.getItem('allUsers')) {
             const allUsers = JSON.parse(localStorage.getItem('allUsers'))
             localStorage.setItem('allUsers', JSON.stringify([...allUsers, newUser]))
-
         } else {
             localStorage.setItem('allUsers', JSON.stringify([newUser]))
         }
@@ -52,7 +50,6 @@ function Main() {
     }
 
     const sendMessage = (message) => {
-
         const messageData = {
             date: Date.now(),
             userName: currentUser.username,
@@ -65,10 +62,9 @@ function Main() {
     }
 
     const updateMessages = (data = {}) => {
-
         const messages = localStorage.getItem('allMessages');
-        const messagesArray = Boolean(messages) ? JSON.parse(messages) : [];
 
+        const messagesArray = Boolean(messages) ? JSON.parse(messages) : [];
         messagesArray.push(data);
 
         const sortedMessagesArray = sortArray(messagesArray.filter((item) => {
@@ -80,14 +76,12 @@ function Main() {
         setMessages(sortedMessagesArray);
     }
 
-    function sortArray(arr, key = '') {
-
+    const sortArray = (arr, key = '') => {
         const sortedArray = arr.map((item, index) => {
             return {
                 index: index,
                 value: Boolean(key) ? item[key] : item[Object.keys(item)[0]],
             };
-
         });
 
         sortedArray.sort((a, b) => {
@@ -102,7 +96,7 @@ function Main() {
         return sortedArray.map((item) => arr[item.index]);
     }
 
-    const updateUserList = () => {
+    const updateAllUsers = () => {
         if (localStorage.getItem('allUsers')) {
             const allUsers = JSON.parse(localStorage.getItem('allUsers'));
             setUsers(allUsers)
@@ -110,20 +104,23 @@ function Main() {
     }
 
     const signOutHandler = () => {
-        sessionStorage.clear()
-        setLoggedIn(false)
-        setExitPopup(false)
-        setInfoPopup(true)
-        deleteGoneUser()
+        setPreloader(true)
+        setTimeout(() => {
+            sessionStorage.clear()
+            setLoggedIn(false)
+            setUtilityPopup(false)
+            setInfoPopup(true)
+            deleteGoneUser()
+            setPreloader(false)
+        }, 1000)
     }
 
     const deleteGoneUser = () => {
-
         if (localStorage.getItem('allUsers')) {
 
             const allUsers = JSON.parse(localStorage.getItem('allUsers'));
             const currentUserId = currentUser.id
-            
+
             const newUserList = allUsers.filter((user) => {
                 return user.id !== currentUserId
             })
@@ -134,10 +131,15 @@ function Main() {
     }
 
     const clearChat = () => {
-        localStorage.setItem('allMessages', [])
-        updateMessages()
-        setExitPopup(false)
+        setPreloader(true)
+        setTimeout(() => {
+            localStorage.setItem('allMessages', [])
+            updateMessages()
+            setUtilityPopup(false)
+            setPreloader(false)
+        }, 2000)
     }
+
 
     useEffect(() => {
         if (sessionStorage.getItem('currentUser')) {
@@ -148,16 +150,17 @@ function Main() {
         }
     }, [])
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (!loggedIn) {
-            updateUserList();
+            updateAllUsers();
             return
         }
-        updateUserList();
+
+        updateAllUsers();
         updateMessages()
 
         window.addEventListener('storage', () => {
-            updateUserList();
+            updateAllUsers();
             updateMessages()
         });
 
@@ -179,9 +182,9 @@ function Main() {
                     ''
                 }
 
-                {exitPopup ?
-                    <ExitPopup 
-                        setExitPopup={setExitPopup}
+                {utilityPopup ?
+                    <UtilityPopup
+                        setUtilityPopup={setUtilityPopup}
                         onSignOut={signOutHandler}
                         clearChat={clearChat}
                     /> :
@@ -189,14 +192,14 @@ function Main() {
                 }
 
                 <ChatHeader
-                    setLoggedIn={setLoggedIn}
-                    loggedIn={loggedIn}
-                    setPreloader={setPreloader}
-                    submitHandler={signIn}
                     currentUser={currentUser}
+                    loggedIn={loggedIn}
+                    setLoggedIn={setLoggedIn}
                     users={users}
-                    exitPopup={exitPopup}
-                    setExitPopup={setExitPopup}
+                    submitHandler={signIn}
+                    utilityPopup={utilityPopup}
+                    setUtilityPopup={setUtilityPopup}
+                    setPreloader={setPreloader}
                 />
 
                 <UserList
@@ -205,11 +208,10 @@ function Main() {
                 />
 
                 <ChatSection
+                    currentUser={currentUser}
                     loggedIn={loggedIn}
                     messages={messages}
-                    currentUser={currentUser}
-                //avatar={userAvatar}
-                //onUpdateMessages={onUpdateMessages}
+
                 />
                 <ChatInput
                     currentUser={currentUser}
@@ -224,9 +226,8 @@ function Main() {
 
 export default Main
 
-// добавить ховер всем кнопкам 
+// добавить ховер всем кнопкам
 
-// изменить название exitpopup
 
 // закинуть валидации в отдельные папки
 

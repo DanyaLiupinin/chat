@@ -6,7 +6,7 @@ import editButton from '../../images/editbutton.svg'
 import defaultAvatar from '../../images/defaultavatar.png'
 
 
-function ChatHeader({ submitHandler, setPreloader, currentUser, loggedIn, users, exitPopup, setExitPopup }) {
+function ChatHeader({ submitHandler, setPreloader, currentUser, loggedIn, users, utilityPopup, setUtilityPopup }) {
 
     //const [avatarURL, setAvatarURL] = useState('')
     const [username, setUsername] = useState('')
@@ -35,7 +35,7 @@ function ChatHeader({ submitHandler, setPreloader, currentUser, loggedIn, users,
     }
 
     const onSettingPopup = () => {
-        setExitPopup(!exitPopup)
+        setUtilityPopup(!utilityPopup)
     }
 
     const saveUserData = (e) => {

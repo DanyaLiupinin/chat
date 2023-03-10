@@ -6,7 +6,7 @@ import ChatInput from '../ChatInput/ChatInput'
 import UserList from '../UserList/UserList'
 import InfoPopup from '../InfoPopup/InfoPopup'
 import Preloader from '../Preloader/Preloader'
-import ExitPopup from '../ExitPopup/ExitPopup'
+import ExitPopup from '../UtilityPopup/UtilityPopup'
 
 import { useEffect, useState } from 'react'
 
@@ -233,4 +233,3 @@ export default Main
 // рефакторинг
 
 // написать документацию 
-

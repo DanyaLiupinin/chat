@@ -1,8 +1,8 @@
-import './ExitPopup.css'
+import './UtilityPopup.css'
 
 import krestik from '../../images/krestik.png'
 
-const ExitPopup = ({setExitPopup, onSignOut, clearChat}) => {
+const UtilityPopup = ({setExitPopup, onSignOut, clearChat}) => {
 
 
 
@@ -18,4 +18,4 @@ const ExitPopup = ({setExitPopup, onSignOut, clearChat}) => {
     )
 }
 
-export default ExitPopup
+export default UtilityPopup
